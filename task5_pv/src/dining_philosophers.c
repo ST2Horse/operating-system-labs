@@ -63,14 +63,17 @@ static void *philosopher_thread(void *arg) {
         pthread_mutex_lock(&dp_state_mutex);
         dp_state[index] = THINKING;
         pthread_mutex_unlock(&dp_state_mutex);
-        dp_show_state("哲学家正在思考。");
-        random_sleep(1, 3);
+        char msg1[64];
+	sprintf(msg1, "P%d 正在思考", id);
+	dp_show_state(msg1);
+	random_sleep(1, 3);
 
         pthread_mutex_lock(&dp_state_mutex);
         dp_state[index] = WAITING;
         pthread_mutex_unlock(&dp_state_mutex);
-        dp_show_state("哲学家请求左右两根筷子。");
-
+	char msg2[64];
+	sprintf(msg2, "P%d 请求左右两根筷子", id);
+	dp_show_state(msg2);
         sem_wait(&dp_room);
         sem_wait(&dp_chopsticks[left]);
         pthread_mutex_lock(&dp_state_mutex);
@@ -83,8 +86,10 @@ static void *philosopher_thread(void *arg) {
         dp_state[index] = EATING;
         pthread_mutex_unlock(&dp_state_mutex);
 
-        dp_show_state("哲学家获得两根筷子，开始就餐。");
-        random_sleep(2, 4);
+        char msg3[64];
+	sprintf(msg3, "P%d 获得两根筷子，开始就餐", id);
+	dp_show_state(msg3);
+	random_sleep(2, 4);
 
         pthread_mutex_lock(&dp_state_mutex);
         dp_chopstick_owner[right] = 0;
@@ -96,7 +101,9 @@ static void *philosopher_thread(void *arg) {
         sem_post(&dp_chopsticks[left]);
         sem_post(&dp_room);
 
-        dp_show_state("哲学家结束就餐并释放筷子。");
+	char msg4[64];
+	sprintf(msg4, "P%d 结束就餐并释放筷子", id);
+	dp_show_state(msg4);
     }
 
     return NULL;
