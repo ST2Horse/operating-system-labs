@@ -31,7 +31,6 @@ static void sm_show_state(const char *message) {
     } else {
         printf("拥有火柴的吸烟者 S3\n");
     }
-    printf("等待说明：代理者每次放两种材料，拥有第三种材料的吸烟者被唤醒。\n");
     pthread_mutex_unlock(&sm_print_mutex);
 }
 
