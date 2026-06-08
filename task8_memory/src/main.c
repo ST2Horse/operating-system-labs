@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define KB 1024U
-#define MB (1024ULL * 1024ULL)
+#define KB UINT32_C(1024)
+#define MB UINT32_C(1048576)
 
 #define MAX_FIXED_FRAMES 64
 #define MAX_JOBS 10
