@@ -1,16 +1,13 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -std=c11
+PYTHON ?= python3
 
-TARGET = memory_lab
-SRCS = src/main.c
-OBJS = $(SRCS:.c=.o)
+all: run
 
-all: $(TARGET)
+run:
+	$(PYTHON) gui_memory_lab.py
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+gui: run
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -rf __pycache__
 
-.PHONY: all clean
+.PHONY: all run gui clean

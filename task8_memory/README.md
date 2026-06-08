@@ -1,6 +1,6 @@
 # Task 8: 内存管理模拟实验
 
-本实验实现操作系统内存管理相关算法的控制台模拟。
+本实验使用 Python Tkinter 实现桌面图形界面，不是网页形式。
 
 ## 功能
 
@@ -22,19 +22,33 @@
    - 采用顺序探测处理冲突
    - 随机生成 16 位逻辑地址并转换为物理地址
 
-## 编译
+## 运行
+
+```bash
+python3 gui_memory_lab.py
+```
+
+也可以使用：
 
 ```bash
 make
 ```
 
-## 运行
+或：
 
 ```bash
-./memory_lab
+make gui
 ```
 
-程序启动后通过菜单选择实验模块。
+## 环境说明
+
+图形界面使用 Python 标准库 Tkinter。若在 WSL 中运行，需要 WSLg 或可用的 X Server。
+
+如果提示缺少 Tkinter，可安装：
+
+```bash
+sudo apt install python3-tk
+```
 
 ## 清理
 
